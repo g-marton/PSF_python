@@ -35,7 +35,13 @@ qs.extend_pandas()
 #page configuration and opening 
 st.set_page_config(page_title="PSF DASHBOARD", page_icon=":smile:", layout="wide")
 st.title("Welcome to Prosper Social Finance's Interactive Financial Analysis Dashboard!")
-st.write("code done by: Gergely Marton")
+col1, col2 = st.columns([0.14, 0.86], gap="small")
+col1.write("code done by:")
+linkedin = "https://www.linkedin.com/in/gergely-marton-2024-2026edi"
+col2.markdown(
+        f'<a href="{linkedin}" target="_blank" style="text-decoration: none; color: inherit;"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="15" height="15" style="vertical-align: middle; margin-right: 10px;">`Gergely Marton`</a>',
+        unsafe_allow_html=True,
+    )
 selection = st.selectbox("Please select the analysis tools you would like to use: ", ["Balloons", "Opt1: Basic technical single stock analysis", "Opt2: Stock Price Forecasting with Prophet (developed by Meta)", "Opt3: Advanced technical single stock analysis", "Opt4: Advanced portfolio analysis", "Opt5: Simple Efficient Frontier Portfolio Optimization", "Opt6: Black-Litterman Efficient Frontier Portfolio Optimization"])
 
 ############################################################################################################################################
