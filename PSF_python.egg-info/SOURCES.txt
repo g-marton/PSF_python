@@ -1,0 +1,7 @@
+README.md
+setup.py
+PSF_python.egg-info/PKG-INFO
+PSF_python.egg-info/SOURCES.txt
+PSF_python.egg-info/dependency_links.txt
+PSF_python.egg-info/requires.txt
+PSF_python.egg-info/top_level.txt
