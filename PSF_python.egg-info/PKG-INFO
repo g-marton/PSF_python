@@ -1,0 +1,10 @@
+Metadata-Version: 2.1
+Name: PSF_python
+Version: 0.1
+Summary: Modified version of QuantStats
+Author: Your Name
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: matplotlib
+Requires-Dist: seaborn
+Requires-Dist: scipy
