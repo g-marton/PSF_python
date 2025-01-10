@@ -89,7 +89,9 @@ if selection == "Opt1: Basic technical single stock analysis":
         st.subheader('Technical Analysis Dashboard:')
         df= pd.DataFrame()
         indicator_list=df.ta.indicators(as_list=True)
-        selected_indicators = st.multiselect('Please select the technical indicator you are interested in:', options=indicator_list)
+        excluded_indicators = ["aberration", "above", "above_value", "accbands", "adjusted_sortino", "adx", "aggregate_returns", "amat", "aobv", "apo", "aroon", "avg_loss", "avg_return", "avg_win", "bbands", "below", "below_value", "best", "bop", "brar", "cagr", "calmar", "cdl_pattern", "cdl_z", "cksp", "common_sense_ratio", "comp", "compare", "compsum", "conditional_value_at_risk", "consecutive_losses", "consecutive_wins", "cpc_index", "cross", "cross_value", "curr_month", "cvar", "date", "dm", "donchian", "eri", "expected_return", "expected_shortfall", "exponential_stdev", "exposure", "fisher", "gain_to_pain_ratio", "geometric_mean", "ghpr", "greeks", "ha", "hilo", "hwc", "ichimoku", "implied_volatility", "information_ratio", "kc", "kdj", "kelly_criterion", "kst", "kvo", "log_returns", "long_run", "macd", "massi", "max_drawdown", "mcgd", "metrics", "monthly_returns", "mtd", "multi_shift", "ohlc4", "omega", "outlier_loss_ratio", "outlier_win_ratio", "outliers", "payoff_ratio", "pct_rank", "pdist", "plot_daily_returns", "plot_distribution", "plot_drawdown", "plot_drawdown_periods", "plot_earnings", "plot_histogram", "plot_log_returns", "plot_monthly_heatmap", "plot_returns", "plot_rolling_beta", "plot_rolling_sharpe", "plot_rolling_sortino", "plot_rolling_volatility", "plot_snapshot", "plot_yearly_returns", "ppo", "probabilistic_adjusted_sortino_ratio", "probabilistic_sharpe_ratio","probabilistic_sortino_ratio", "profit_factor", "profit_ratio", "psar", "pvo", "pvr", "qqe", "qstick", "qtd", "r2", "r_squared", "rar", "rebase", "recovery_factor", "remove_outliers", "risk_of_ruin", "risk_return_ratio", "rolling_greeks", "rolling_sharpe", "rolling_sortino", "rolling_volatility", "ror", "rvgi", "serenity_index", "sharpe", "short_run", "smart_sharpe", "smart_sortino", "smi", "sortino", "squeeze", "squeeze_pro", "stc", "stoch","stochrsi", "supertrend", "tail_ratio", "td_seq", "thermo", "to_drawdown_series", "to_excess_returns","to_log_returns", "to_prices", "to_returns", "tos_stdevall", "treynor_ratio", "trix", "tsi", "tsignals", "ulcer_index", "ulcer_performance_index", "upi", "value_at_risk", "var", "vortex", "vp", "win_loss_ratio", "win_rate", "worst", "xsignals", "ytd"]
+        filtered_indicator_list = [ind for ind in indicator_list if ind not in excluded_indicators]
+        selected_indicators = st.multiselect('Please select the technical indicator you are interested in:', options=filtered_indicator_list)
         indicators_df = pd.DataFrame(index=data.index)
         
         for indicator_name in selected_indicators:
@@ -466,9 +468,7 @@ if selection == "Opt5: Simple Efficient Frontier Portfolio Optimization":
     st.header("Portfolio Optimization with Markowitz Efficient Frontier")
     
     st.write("The Markowitz Efficient Frontier portfolio optimization method, developed by Harry Markowitz, is a cornerstone of modern portfolio theory. It identifies the set of portfolios that offer the maximum expected return for a given level of risk (or equivalently, the minimum risk for a given level of return). The method uses the mean-variance optimization framework, which considers the expected returns, variances (risks), and covariances (correlations) of asset returns.")
-
-    st.write("By diversifying investments, the approach reduces overall portfolio risk through the selection of assets with low or negative correlations, creating the efficient frontier — a curve representing the optimal trade-offs between risk and return. Investors can then choose a portfolio from the frontier based on their risk tolerance.")
-
+    st.write("By diversifying investments, the approach reduces overall portfolio risk through the selection of assets with low or negative correlations, creating the efficient frontier — a curve representing the optimal trade-offs between risk and return. Investors can then choose a portfolio from the frontier based on their risk tolerance. If there is a problem with the depiction of the results, it is likely due to the maximum weight, which should be increased.")
     tickers_input = st.sidebar.text_input("Here you can input the tickers of the stocks your portfolio consists (separate with comma):", value="MSFT, AAPL, AMZN")
     tickers = [ticker.strip().upper() for ticker in tickers_input.split(",") if ticker.strip()]
 
@@ -599,7 +599,7 @@ if selection == "Opt6: Black-Litterman Efficient Frontier Portfolio Optimization
     
     st.write("The Black-Litterman portfolio optimization method is a framework that combines modern portfolio theory (e.g., the Markowitz efficient frontier) with investor views to generate an improved estimate of expected returns. It starts with a baseline of market-implied returns derived from the market capitalization weights and the covariance matrix of asset returns. Investors can then incorporate their subjective views (absolute or relative) about certain assets' returns, which are blended with the market's baseline using Bayesian principles.")
 
-    st.write("This approach helps overcome issues like over-concentration in portfolios and instability in traditional mean-variance optimization, producing more balanced and realistic portfolios that reflect both market data and investor preferences.")
+    st.write("This approach helps overcome issues like over-concentration in portfolios and instability in traditional mean-variance optimization, producing more balanced and realistic portfolios that reflect both market data and investor preferences. If there is a problem with the depiction of the results, it is likely due to the maximum weight, which should be increased.")
 
     #getting the tickers
     tickers_input = st.sidebar.text_input("Here you can input the tickers of the stocks your portfolio consists (separate with comma):", value="MSFT, AAPL, AMZN")
