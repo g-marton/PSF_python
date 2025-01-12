@@ -15,7 +15,7 @@ jobs:
       with:
         python-version: 3.11
 
-    - name: Install Microsoft Fonts
+    - name: Install Microsoft Fonts (Arial)
       run: |
         sudo apt-get update
         sudo apt-get install -y ttf-mscorefonts-installer fontconfig
@@ -23,14 +23,10 @@ jobs:
 
     - name: Install dependencies
       run: |
+        pip install --upgrade pip
         pip install -r requirements.txt
 
     - name: Run Streamlit App
       run: |
-        streamlit run PSF_analysis_appvol1.py
+        streamlit run PSF_analysis_appvol1.py --server.headless true
 
-    - name: Install Microsoft Fonts (Arial)
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y ttf-mscorefonts-installer fontconfig
-        sudo fc-cache -f -v
