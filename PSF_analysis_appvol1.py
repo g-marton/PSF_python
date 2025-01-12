@@ -43,7 +43,6 @@ qs.extend_pandas()
 
 #page configuration and opening 
 st.set_page_config(page_title="PSF DASHBOARD", page_icon=":smile:", layout="wide")
-st.write(fm.findSystemFonts(fontpaths=None, fontext='ttf'))
 st.title("Welcome to Prosper Social Finance's Interactive Financial Analysis Dashboard!")
 col1, col2 = st.columns([0.14, 0.86], gap="small")
 col1.write("code done by:")
