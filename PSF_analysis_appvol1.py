@@ -21,9 +21,14 @@ from pypfopt import plotting
 import scipy.stats as stats
 from pypfopt import black_litterman, risk_models
 from pypfopt import BlackLittermanModel
+import matplotlib as mpl
 import matplotlib
 
-matplotlib.rcParams['font.family'] = 'DejaVu Sans'
+mpl.font_manager._rebuild()
+matplotlib.rcParams.update({
+    'font.family': 'DejaVu Sans',
+    'axes.unicode_minus': False
+})
 plt.rcParams['font.family'] = 'DejaVu Sans'
 
 qs.extend_pandas()
