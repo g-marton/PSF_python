@@ -23,15 +23,20 @@ from pypfopt import black_litterman, risk_models
 from pypfopt import BlackLittermanModel
 import matplotlib as mpl
 import matplotlib.font_manager as fm
+import os
 
-fm._get_fontconfig_fonts()
+os.system('apt-get update && apt-get install -y ttf-mscorefonts-installer fontconfig && fc-cache -f -v')
+
 mpl.rcParams.update({
     'font.family': 'DejaVu Sans',
     'axes.unicode_minus': False
 })
+
 plt.rcParams['font.family'] = 'DejaVu Sans'
 
 qs.extend_pandas()
+
+st.write(fm.findSystemFonts(fontpaths=None, fontext='ttf'))
 
 #i have to figure out why the shrinkage makes the correlation matrix so negative and how can I make it better
 
