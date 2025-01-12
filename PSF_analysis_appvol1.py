@@ -25,8 +25,6 @@ import matplotlib as mpl
 import matplotlib.font_manager as fm
 import os
 
-os.system('apt-get update && apt-get install -y ttf-mscorefonts-installer fontconfig && fc-cache -f -v')
-
 mpl.rcParams.update({
     'font.family': 'DejaVu Sans',
     'axes.unicode_minus': False
