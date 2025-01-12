@@ -22,7 +22,7 @@ import scipy.stats as stats
 from pypfopt import black_litterman, risk_models
 from pypfopt import BlackLittermanModel
 import matplotlib as mpl
-import matplotlib
+import matplotlib.font_manager as fm
 
 fm._get_fontconfig_fonts()
 matplotlib.rcParams.update({
