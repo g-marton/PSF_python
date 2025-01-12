@@ -159,7 +159,7 @@ if selection == "Opt1: Basic technical single stock analysis":
             interval = st.sidebar.selectbox('Interval', options=('1min', '5min', '15min', '30min', '1hour', '4hour'))
             financial_data = 'historical-chart/'+interval
 
-        API_KEY = "vSYSW0hsqQXc5N32P4jMXXuv0pOqPwXe"
+        API_KEY = st.secrets["API"]["API_KEY"]
         url = f'{base_url}/v3/{financial_data}/{ticker}?apikey={API_KEY}'
         response = requests.get(url)
         data = response.json()
