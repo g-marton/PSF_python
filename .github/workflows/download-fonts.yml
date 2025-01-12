@@ -15,11 +15,11 @@ jobs:
       with:
         python-version: 3.11
 
-    - name: Install Microsoft Fonts (Arial)
+    - name: Install Microsoft Fonts and Clear Matplotlib Cache
       run: |
         sudo apt-get update
-        sudo apt-get install -y ttf-mscorefonts-installer fontconfig
-        sudo fc-cache -f -v
+        sudo apt-get install -y msttcorefonts fontconfig
+        rm -rf ~/.cache/matplotlib  # Clear font cache
 
     - name: Install dependencies
       run: |
