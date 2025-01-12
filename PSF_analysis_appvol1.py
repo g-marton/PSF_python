@@ -24,7 +24,7 @@ from pypfopt import BlackLittermanModel
 import matplotlib as mpl
 import matplotlib
 
-mpl.font_manager._rebuild()
+fm._get_fontconfig_fonts()
 matplotlib.rcParams.update({
     'font.family': 'DejaVu Sans',
     'axes.unicode_minus': False
