@@ -44,7 +44,7 @@ plotly==5.24.1
 pandas_ta==0.3.14b0
 prophet==1.1.6
 datetime==5.5
-quantstats==0.0.64
+git+https://github.com/g-marton/quantstats.git
 matplotlib==3.10.0
 seaborn==0.13.2
 stocknews==0.9.11
