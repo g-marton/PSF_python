@@ -25,7 +25,7 @@ import matplotlib as mpl
 import matplotlib.font_manager as fm
 
 fm._get_fontconfig_fonts()
-matplotlib.rcParams.update({
+mpl.rcParams.update({
     'font.family': 'DejaVu Sans',
     'axes.unicode_minus': False
 })
