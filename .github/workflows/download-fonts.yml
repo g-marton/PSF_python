@@ -1,19 +1,30 @@
-name: Download Arial Font
+name: Deploy Streamlit App
 
-on: [push, pull_request]
+on: [push]
 
 jobs:
-  download_fonts:
-    runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest  # Linux environment
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Install dependencies
-      run: sudo apt-get update && sudo apt-get install -y cabextract xfonts-utils
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.11
 
-    - name: Download Arial Font
+    - name: Install Microsoft Fonts
       run: |
-        wget https://downloads.sourceforge.net/corefonts/arial32.exe
-        cabextract arial32.exe -d ~/.fonts
-        fc-cache -fv
+        sudo apt-get update
+        sudo apt-get install -y ttf-mscorefonts-installer fontconfig
+        sudo fc-cache -f -v
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+
+    - name: Run Streamlit App
+      run: |
+        streamlit run PSF_analysis_appvol1.py
