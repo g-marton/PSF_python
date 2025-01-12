@@ -1,0 +1,19 @@
+name: Download Arial Font
+
+on: [push, pull_request]
+
+jobs:
+  download_fonts:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: sudo apt-get update && sudo apt-get install -y cabextract xfonts-utils
+
+    - name: Download Arial Font
+      run: |
+        wget https://downloads.sourceforge.net/corefonts/arial32.exe
+        cabextract arial32.exe -d ~/.fonts
+        fc-cache -fv
