@@ -395,7 +395,7 @@ if selection == "Opt4: Advanced portfolio analysis":
     #start_date_given = st.sidebar.date_input("Select start date:", value=pd.to_datetime("2020-01-01"))
     period = st.sidebar.selectbox("Select Period:", ["1mo", "3mo", "6mo", "1y", "2y", "5y", "max"])
 
-    rebal_period = st.sidebar.selectbox("Please select rebalancing period:", ["1M", None])
+    rebal_period = st.sidebar.selectbox("Please select rebalancing period:", [None])
     rf_rate_input = st.sidebar.number_input("Please provide the risk free rate (if desired to discount)")
 
     tickers = [ticker.strip().upper() for ticker in tickers_input.split(",") if ticker.strip()]
