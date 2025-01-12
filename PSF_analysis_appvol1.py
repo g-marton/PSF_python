@@ -36,8 +36,6 @@ plt.rcParams['font.family'] = 'DejaVu Sans'
 
 qs.extend_pandas()
 
-st.write(fm.findSystemFonts(fontpaths=None, fontext='ttf'))
-
 #i have to figure out why the shrinkage makes the correlation matrix so negative and how can I make it better
 
 #what i think I have to do still: I still have to do something with the dividends in option 1, and then I still have to do something with option 3 i think, for the portfolio performance analysis, as of to define when we invested into each individual stock
@@ -47,7 +45,7 @@ st.write(fm.findSystemFonts(fontpaths=None, fontext='ttf'))
 
 #page configuration and opening 
 st.set_page_config(page_title="PSF DASHBOARD", page_icon=":smile:", layout="wide")
-st.write(fm.findSystemFonts(fontpaths=None, fontext='ttf')
+st.write(fm.findSystemFonts(fontpaths=None, fontext='ttf'))
 st.title("Welcome to Prosper Social Finance's Interactive Financial Analysis Dashboard!")
 col1, col2 = st.columns([0.14, 0.86], gap="small")
 col1.write("code done by:")
