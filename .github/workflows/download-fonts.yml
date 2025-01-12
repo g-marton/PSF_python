@@ -1,32 +1,16 @@
-name: Deploy Streamlit App
+name: Deploy Streamlit App with Docker
 
 on: [push]
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # Linux environment
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Set up Python 3.11
-      uses: actions/setup-python@v4
-      with:
-        python-version: 3.11
-
-    - name: Install Microsoft Fonts and Clear Matplotlib Cache
+    - name: Build and Run Docker Container
       run: |
-        sudo apt-get update
-        sudo apt-get install -y msttcorefonts fontconfig
-        rm -rf ~/.cache/matplotlib  # Clear font cache
-
-    - name: Install dependencies
-      run: |
-        pip install --upgrade pip
-        pip install -r requirements.txt
-
-    - name: Run Streamlit App
-      run: |
-        streamlit run PSF_analysis_appvol1.py --server.headless true
-
+        docker build -t streamlit-app .
+        docker run -p 8501:8501 streamlit-app
