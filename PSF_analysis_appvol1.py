@@ -646,10 +646,10 @@ if selection == "Opt6: Black-Litterman Efficient Frontier Portfolio Optimization
     st.write("Delta: ", delta)
 
     #heatmap for the covariant correlations
-    #fig1, ax1, = plt.subplots(figsize=(8,6))
-    #sns.heatmap(S.corr(), cmap = 'coolwarm', annot=True, ax=ax1)
-    #st.subheader("Covariant Correlation Heatmap")
-    #st.pyplot(fig1)
+    fig1, ax1, = plt.subplots(figsize=(8,6))
+    sns.heatmap(S.corr(), cmap = 'coolwarm', annot=True, ax=ax1)
+    st.subheader("Covariant Correlation Heatmap")
+    st.pyplot(fig1)
 
     #generating the prior 
     market_prior = black_litterman.market_implied_prior_returns(mcaps, delta, S, risk_free_rate=rf_rate)
