@@ -495,9 +495,12 @@ if selection == "Opt5: Simple Efficient Frontier Portfolio Optimization":
 
     #downloading the dataframe for the calculations
     df = yf.download(tickers, start= start_date, end=end_date)["Close"]
-
+    
     mu = expected_returns.mean_historical_return(df)
     S = risk_models.sample_cov(df)
+
+    # Create a dictionary mapping tickers to their expected returns
+    mu_dict = dict(zip(tickers, mu))
 
     sorted_tickers = sorted(tickers)  # Sort tickers alphabetically
     sorted_mu = [mu[tickers.index(ticker)] for ticker in sorted_tickers]
