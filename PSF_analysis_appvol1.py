@@ -479,7 +479,7 @@ if selection == "Opt5: Simple Efficient Frontier Portfolio Optimization":
     st.write("The Markowitz Efficient Frontier portfolio optimization method, developed by Harry Markowitz, is a cornerstone of modern portfolio theory. It identifies the set of portfolios that offer the maximum expected return for a given level of risk (or equivalently, the minimum risk for a given level of return). The method uses the mean-variance optimization framework, which considers the expected returns, variances (risks), and covariances (correlations) of asset returns.")
     st.write("By diversifying investments, the approach reduces overall portfolio risk through the selection of assets with low or negative correlations, creating the efficient frontier — a curve representing the optimal trade-offs between risk and return. Investors can then choose a portfolio from the frontier based on their risk tolerance. If there is a problem with the depiction of the results, it is likely due to the maximum weight, which should be increased.")
     tickers_input = st.sidebar.text_input("Here you can input the tickers of the stocks your portfolio consists (separate with comma):", value="MSFT, AAPL, AMZN")
-    tickers = [ticker.strip().upper() for ticker in tickers_input.split(",") if ticker.strip()]
+    tickers = sorted([ticker.strip().upper() for ticker in tickers_input.split(",") if ticker.strip()])
 
     start_date = st.sidebar.date_input("Define the start date for which we should define the efficient portfolio:", value="2020-01-01")
     end_date = datetime.today()
@@ -500,14 +500,14 @@ if selection == "Opt5: Simple Efficient Frontier Portfolio Optimization":
     S = risk_models.sample_cov(df)
 
     # Create a dictionary mapping tickers to their expected returns
-    mu_dict = dict(zip(tickers, mu))
+    #mu_dict = dict(zip(tickers, mu))
 
-    sorted_tickers = sorted(tickers)  # Sort tickers alphabetically
-    sorted_mu = [mu[tickers.index(ticker)] for ticker in sorted_tickers]
+    #sorted_tickers = sorted(tickers)  # Sort tickers alphabetically
+    #sorted_mu = [mu[tickers.index(ticker)] for ticker in sorted_tickers]
     
     returns_df = pd.DataFrame({
-        "Ticker": sorted_tickers,
-        "Expected Return": sorted_mu})
+        "Ticker": tickers,
+        "Expected Return": mu.values})
 
     # Display the DataFrame as a table in Streamlit
     st.subheader("Expected Returns for Stocks")
