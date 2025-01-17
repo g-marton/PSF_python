@@ -511,7 +511,7 @@ if selection == "Opt5: Simple Efficient Frontier Portfolio Optimization":
 
     # Display the DataFrame as a table in Streamlit
     st.subheader("Expected Returns for Stocks")
-    #st.table(returns_df)
+    st.table(returns_df)
 
     #Optimizing for maximum Sharpe ratio
     ef = EfficientFrontier(mu, S, weight_bounds=(0,max_weight))
